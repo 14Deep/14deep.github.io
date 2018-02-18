@@ -14,7 +14,7 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: 14Deep - Security Blog
+title: Security Blog
 
 # Short description of your site
 description: Just another security blog, posting about my learning and interests.
