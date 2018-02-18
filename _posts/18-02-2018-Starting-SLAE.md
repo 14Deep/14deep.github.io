@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SLAE Overview
-image: /img/hello_world.jpeg
+subtitle: Starting the SLAE course
 ---
 
 This is my first post on this page, and is the reason it was set up in the first place. Recently, I enrolled for the SecurityTube Linux Assembly Expert (SLAE) course to keep myself learning after finsihing my OSCP at the end of 2017. The end goal was to use this as a stepping stone to eventually go on to do the next level up from the OSCP - the OSCE.
