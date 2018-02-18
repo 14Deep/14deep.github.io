@@ -25,7 +25,7 @@ description: Just another security blog, posting about my learning and interests
 navbar-links:
   About Me: "aboutme"
   Resources:
-    - My Github Projects: "http://github.io/14deep/"
+    - My Github Projects: "http://github.com/14deep/"
     
   Author's home: "http://14deep.github.io"
 
