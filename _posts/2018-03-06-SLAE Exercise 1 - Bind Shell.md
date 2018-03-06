@@ -60,6 +60,6 @@ Using Strace along with the complied C bind shell, it can be seen exactly what S
 ~~~
 The open port was connected to so that the entirety of the program running could be observed with strace. The following was observed:
 
-![Crepe](https://ibb.co/jzvsv7)
+![Crepe](https://image.ibb.co/gQbbNn/C_Bind_Strace.png)
 
 ![Local Image](./img/SLAE_Bind/C_Bind_Strace.png)
