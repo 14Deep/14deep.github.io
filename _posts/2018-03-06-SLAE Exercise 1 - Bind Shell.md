@@ -62,4 +62,4 @@ The open port was connected to so that the entirety of the program running could
 
 ![Crepe](https://image.ibb.co/gQbbNn/C_Bind_Strace.png)
 
-![Local Image](./img/SLAE_Bind/C_Bind_Strace.png)
+Local Image(./img/SLAE_Bind/C_Bind_Strace.png)
