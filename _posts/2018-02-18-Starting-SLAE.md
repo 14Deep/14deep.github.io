@@ -7,7 +7,7 @@ tags: [SLAE]
 
 This is my first post on this page, and is the reason it was set up in the first place. Recently, I enrolled for the SecurityTube Linux Assembly Expert (SLAE) course to keep myself learning after finsihing my OSCP at the end of 2017. The end goal was to use this as a stepping stone to eventually go on to do the next level up from the OSCP - the OSCE.
 
-So far I have completed the course material for the SLAE and am working my way through the questions. I plan to update this blog as I complete (and have written up!) each question. The questions posed all seem really interesting, and am looking forward to learning more from this course. The requirements for the exam are:
+So far I have completed the course material for the SLAE and am working my way through the questions. I plan to update this blog as I complete and have written up each question. The questions posed all seem really interesting, and am looking forward to learning more from this course. The requirements for the exam are:
 
 **001 Create a Shell_Bind_TCP Shellcode**
 	- Binds to a port
