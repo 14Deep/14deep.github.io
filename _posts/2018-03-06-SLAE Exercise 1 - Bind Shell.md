@@ -106,12 +106,11 @@ Execve is a syscall that allows execution of another program from within the she
 
 **Syscalls**
 
-It needs to be determined what syscalls are required to write this shellcode. This will vary depending on the platform using, for me the location for this was:
+It needs to be determined what syscalls are required to write this shellcode. This will vary depending on the platform using, for me the location for this was '/usr/include/i386-linux-gnu/asm/unistd_32.h'Using the following, each syscall could be identified:
 
-	/usr/include/i386-linux-gnu/asm/unistd_32.h
-
-Using 'cat /usr/include/i386-linux-gnu/asm/unistd_32.h | grep *syscall*' each syscall can be identified. 
-
+~~~
+cat /usr/include/i386-linux-gnu/asm/unistd_32.h | grep *syscall* 
+~~~
 
 
 
