@@ -7,19 +7,28 @@ tags: [SLAE]
 
 **Overview**
 
-The first task of the SLAE exam requires a bind shell to be written. The requirements for this were as follows:
-	- Binds to a port.
-	- Executes a shell on an incoming connection.
-	- The port number should be easily configurable within the shell code. 
+The first task of the SLAE exam required a bind shell to be written. The requirements for this were as follows:
+
+- Binds to a port.
+- Executes a shell on an incoming connection.
+- The port number should be easily configurable within the shell code. 
 
 **Requirements**
 
-To start, it is best to find out what is needed to create a bind shell in a higher level language, and how each of all of these components work. First of all, what is a bind shell?  A bind shell is a shell that binds to a specific port on the target that listens to incoming connections. When a device connects to this port, a shell will be presented. So what is needed from a bind shell? It needs to:
+As a starting point it was decided to find out what is needed to create a bind shell in a higher level language, and how the identified components would work. 
+
+*So what is a bind shell?*
+
+A bind shell is a shell that binds to a specific port on the target that listens to incoming connections. When a device connects to this port, a shell will be presented. 
+
+*So what is needed from a bind shell?* 
+
+It needs to:
 
 - Be waiting for an incoming connection - bind to a port. 
 - Provide the incoming connection with a shell by utilising execve (syscall 11). 
 
-The following C taken from [here](https://azeria-labs.com/tcp-bind-shell-in-assembly-arm-32-bit/), was utilised to determine what was needed to create a bind shell:
+The following C taken from [here](https://azeria-labs.com/tcp-bind-shell-in-assembly-arm-32-bit/) was utilised to determine what was needed to create a bind shell:
 
 ~~~
 #include <stdio.h> 
@@ -114,5 +123,3 @@ cat /usr/include/i386-linux-gnu/asm/unistd_32.h | grep *syscall*
 
 
 
-
-![Local Image](.Images/ex1/C_Bind_Strace.png)
