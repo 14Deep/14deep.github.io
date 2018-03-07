@@ -191,7 +191,7 @@ The written assmebly is compiled using the script 'compile.sh' seen on my SLAE g
 To obtain shellcode from the compiled assembly, a combination of linux commands can be used which can be found [here](http://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump):
 
 ~~~
-*objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'*
+objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
 ~~~
 
 This presents the following:
