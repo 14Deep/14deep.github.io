@@ -361,7 +361,7 @@ _start:
     	xor eax, eax  ; Clearing eax
     	push eax      ; Pushing 0 to the stack
 	
-   	;push ////bin/bash, could be shortened to //bin/sh
+   	;push bin bash command
     	push 0x68736162
    	push 0x2f6e6962
     	push 0x2f2f2f2f
