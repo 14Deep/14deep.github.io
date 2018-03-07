@@ -114,3 +114,6 @@ Using 'cat /usr/include/i386-linux-gnu/asm/unistd_32.h | grep *syscall*' each sy
 
 
 
+
+
+![Local Image](.Images/ex1/C_Bind_Strace.png)
