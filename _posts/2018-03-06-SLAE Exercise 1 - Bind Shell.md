@@ -60,7 +60,7 @@ Using Strace along with the complied C bind shell, it can be seen exactly what S
 ~~~
 The open port was connected to so that the entirety of the program running could be observed with strace. The following was observed:
 
-![Strace](https://image.ibb.co/gQbbNn/C_Bind_Strace.png)
+![Strace](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/img/SLAE_Bind/C_Bind_Strace.png)
 
 It can be seen that a socket is created, bound to a port and set to listen for an incoming connection. Once a connection is observed it accepts the connection and uses dup2 to pipe the inbound connection into the execve Syscall, which will subsequently run '/bin/sh' to provide the inbound connection with a shell. 
 
