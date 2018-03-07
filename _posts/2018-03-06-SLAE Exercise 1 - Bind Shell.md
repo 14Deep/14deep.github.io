@@ -121,5 +121,66 @@ It needs to be determined what syscalls are required to write this shellcode. Th
 cat /usr/include/i386-linux-gnu/asm/unistd_32.h | grep *syscall* 
 ~~~
 
+![syscalls](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/syscalls.png)
+
+From looking at this, the Syscalls required are:
+
+- Socketcall 102
+- Dup2 - 63
+- Execve - 11
+
+**Socketcall**
+
+Of note here is Socketcall, as it encompasses all of the socket related syscalls that are required for the bind shell. Socketcall is used to carry out all of the socket based functionality using the parameters for the call. Socketcall takes 2 parameters, the first being an integer which specifies what call to execute and the second being a pointer to an array of parameters for the corresponding call. 
+
+For the socket functions we need as determined earlier, the following values should be used:
+
+- Socket - 1
+- Bind -   2
+- Listen - 4
+- Accept - 5
+
+These were identified by viewing the following file:
+
+*/usr/include/linux/net.h*
+
+![Socketcall](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/syscall_socketcall.png)
+
+To clarify:
+
+- For the sockets, we should have eax, the value calling the syscall to be 102 (or 0x66). 
+
+- The second value, ebx, should be the corresponding call that we want to use (listed above). 
+
+- Ecx should contain a pointer to the arguments required. 
+
+**Dup2**
+
+As mentioned dup2 is used to pipe the incoming connection from socketcall into the execve call where a shell will be provided. As can be seen in the man pages (man dup2), the structure for dup2 as follows:
+
+*int dup2(int oldfd, int newfd);*
+
+We have the old File Descriptor saved in edx from the earlier accept socketcall which fulfils the first parameter. The 'newfd' will consist of each of the 3 standard streams that were stated earlier. 
+
+So to start, the dup2 syscall is required to be put into eax, this is 63 or '0x3f'. The value required for ebx, as stated before, is the old File Descriptor which is stored within edx. Finally, the new File Descriptor has to be stated, which for this is 0, 1 and 2 for 'STDIN', 'STDOUT' and 'STDERR'. 
+
+**Execve**
+
+Execve is used to execute a program on the machine, in this instance it will be a shell to provide to the incoming connection. The requirements for execve can be seen within the man pages (man execve):
+
+*Int execve(const char *filename, char *const argv[], char *const envp[]);*
+
+Execve executes the program pointed to by filename, which for this will be a shell. The argv parameter is an array of strings to be used as arguments, for this no arguments are required so this will be terminated by a null pointer. The parameter envp is an array of strings too which are passed as  environment to the new program, this is also not required so will be terminated by a null pointer. 
+
+**ASM Bind Shell**
+
+Below is the finished assembly written using the described Syscalls above. The code is heavily commented which should make it easy to follow along. As can be seen, the port that the socket will be bound to can be changed by altering - '\x01\x4d\'.
+
+**Bind Shell Shellcode**
+
+The written assmebly is compiled using the script 'compile.sh' seen on my SLAE github page. This compiles the code with nasm and links it with ld. Once this is done, the compiled shellcode works as can be seen below:
+
+![Bind_Run](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/Bind_Run.png)
+*The running compiled assembly*
 
 
