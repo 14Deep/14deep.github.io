@@ -100,6 +100,15 @@ or dx, 0xfff- The value of dx (which on the first iteration will be 0) is used w
 
 Inc edx - The value oxfff has essentially been inserted into dx within the instruction before by using the 'or' operator. However 0x1000 is required for the page alignment operation. The edx register is therefore incremented by 1 to make the value of edx 0x1000. A subset of the shellcode was adapted and written into a loop to show this easily when debugging with GDB. The code written was:
 
-![Page Alignment]()
+![Page Alignment](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX3/incedx.png)
+
+When debugged, the following shows the output of the 'or' instruction, followed by the 'inc' instruction:
+
+![Page Alignment](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX3/incedx2.png)
+
+Pusha - This instruction pushes all general purpose registers to the stack. This is used to maintain the values after the syscall is used. 
+
+
+
 
 
