@@ -48,7 +48,7 @@ Therefore values have to be pushed to the stack to satisfy these requirements to
 2. The sockaddr structure, found in 'man 7 ip'
 3. The addrlen, which will use the stack pointer
 
-Based on the code written for the reverse shell *here*, the stack has been visualised which should clear up what will be where on the stack when the pointer is pushed to ecx. The stack would appear as below:
+Based on the code written for the reverse shell [here](https://github.com/14Deep/SLAE/tree/master/Exercise%202), the stack has been visualised which should clear up what will be where on the stack when the pointer is pushed to ecx. The stack would appear as below:
 
 	Addr	Value	  Description
   
@@ -92,7 +92,7 @@ _start:
 	    mov al, 0x66 ; Adding syscall for socketcall() to eax
 	    mov bl, 0x1  ; 0x1 is added to bx for the socketcall parameter 'socket'
 
-		     ; At this point, eax is set to 0x66 for the socketcall
+	    	     ; At this point, eax is set to 0x66 for the socketcall
 		     ; syscall, ebx is set to 0x1 for the socket parameter
 		     ; and ecx will contain the values that were pushed to 
 		     ; the stack. 
