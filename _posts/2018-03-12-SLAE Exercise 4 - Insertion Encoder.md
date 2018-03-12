@@ -7,7 +7,7 @@ tags: [SLAE]
 
 **Overview**
 
-The fourth task of the SLAE exam required a custom enncoding shceme to be written. The requirements for this were as follows:
+The fourth task of the SLAE exam required a custom encoding shceme to be written. The requirements for this were as follows:
 
 - PoC using execve-stack as the shellcode to encode and execute
 
