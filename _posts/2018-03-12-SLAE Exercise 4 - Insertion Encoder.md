@@ -15,9 +15,9 @@ The fourth task of the SLAE exam required a custom enncoding shceme to be writte
 
 An insertion encoder was looked at for this exercise. This is done by inserting values into the original shellcode using a script which is then subsequently decoded when the shellcode is run by a decoder stub within the shellcode. The final shellcode will have a format similar to the following:
 
-|------------------|---------------------------|
-|   Decoder stub   |  encoded shellcode        |
-|------------------|---------------------------|
+
+|Decoder stub   |  encoded shellcode|
+
 
 For insertion encoder, a value will be inserted in-between the legitimate shellcode an example can be seen here whereby the value 0x10 is the inserted value:
 
@@ -53,6 +53,7 @@ The shellcode for the execve-stack program is as follows:
 This is due to the requirements set out for this exercise within the exam. 
 
 **Encoder**
+
 For the program to insert the required values into the shellcode, the python script found [here](https://github.com/14Deep/SLAE/tree/master/Exercise%204) can be used to insert the required values into the required shellcode, including putting values at the end of the shellcode to let the decoder stub know when to stop decoding. 
 
 The code is commented so should not need explaining, this can be seen below:
@@ -93,6 +94,7 @@ print 'Total length of encoded shellcode is - %d' % len(bytearray(shellcode))
 
 
 **Decoder**
+
 The decoder utilises the jmp, call, pop technique to get the address of the encoded shellcode. From there, it iterates through the shellcode moving all of the legitimate values into the inserted valued. The shellcode is heavily commented and should clearly explain what is occurring at each step. The shellcode can be found [here](https://github.com/14Deep/SLAE/blob/master/Exercise%204/Encoder.py), and is also displayed below:
 
 ```
