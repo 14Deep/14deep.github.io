@@ -16,7 +16,7 @@ The fifth task of the SLAE exam requires a bind shell to be written. The require
 
 For this exercise it was required to present full analysis on 3 different shellcodes found within metasploit's msfvenom. This tool is used to generate payloads depending on the attacker's requirements. Before the shellcode can be analysed, they have to be created.  The payloads for x86 Linux systems can be observed within msfvenom using the following command:
 
- \* *msfvenom -l payload | grep linux/x86* \*
+ \* msfvenom -l payload | grep linux/x86 \*
 
 With the available payloads able to be seen below:
 
@@ -25,7 +25,7 @@ With the available payloads able to be seen below:
 
 Once the payload required has been chosen, it can be created and saved using the following command:
 
-  *msfvenom -p linux/x86/payload1 -f raw > payload1*
+ \* msfvenom -p linux/x86/payload1 -f raw > payload1 \*
 	
 
 
@@ -37,7 +37,7 @@ Two methods will be used to analyse the shellcode - GDB and Ndisasm. Ndiasm allo
 
 Ndiasm (Netwide Disassembler) is simply just a disassembler. It can be used to disassemble binary files allowing analysis to be carried out on the disassembled file. This program can be used with the following format:
 
-  *ndisasm -b {16|32|64} filename*
+ \* ndisasm -b {16|32|64} filename \*
 	
 The binaries that will be looked at for this exercise the '32' parameter will be used as would be expected. 
 
