@@ -16,7 +16,7 @@ The fifth task of the SLAE exam requires a bind shell to be written. The require
 
 For this exercise it was required to present full analysis on 3 different shellcodes found within metasploit's msfvenom. This tool is used to generate payloads depending on the attacker's requirements. Before the shellcode can be analysed, they have to be created.  The payloads for x86 Linux systems can be observed within msfvenom using the following command:
 
-  *msfvenom -l payload | grep linux/x86*
+ \* *msfvenom -l payload | grep linux/x86* \*
 
 With the available payloads able to be seen below:
 
