@@ -29,8 +29,9 @@ Each of the instructions seen here will be stepped through, describing what is h
 
 
 
-**open**  int open(const char *pathname, int flags);
+**open**  
 
+int open(const char *pathname, int flags);
 The open syscall opens the file that is specified by 'pathname', if the file exists the return value of the syscall is a file descriptor used in subsequent syscalls to refer to this opened file. 
 
 
@@ -46,8 +47,9 @@ int 0x80 - interrupt to call syscall
 
 
 
-**read**  ssize_t read(int fd, void *buf, size_t count);
+**read**  
 
+ssize_t read(int fd, void *buf, size_t count);
 The 'read' syscall will read bytes from the file descriptor retruned from 'open' into the buffer that is selected as a parameter within the ecx register for this syscall. The return value is the number of bytes that have been read which can be used for the count parameter within the next syscall. 
 
 
@@ -65,8 +67,9 @@ int 0x80 - interrupt to call syscall
 
 
  
-**write**  ssize_t write(int fd, const void *buf, size_t count);
+**write**  
 
+ssize_t write(int fd, const void *buf, size_t count);
 The 'write' syscall writes up to the 'count' value of bytes determined within edx which in this case is will be the return balue from the 'read' syscall. This will be written to the file descriptor selected within the first parameter, which for this will be 1 for STDOUT to display the contents of the chosen file. 
 
 mov edx, eax - move return value to edx (number of bytes read is returned to eax)
