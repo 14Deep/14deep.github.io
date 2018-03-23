@@ -5,7 +5,8 @@ subtitle: Shellcode Analysis 2 - Read File
 tags: [SLAE]
 ---
 
-#linux/x86/read_file
+linux/x86/read_file
+======
 
 The second chosen shellcode to be used from msfvenom is the 'read_file' payload. This, as expected, reads a specified file and displays it on the screen. The parameters to be used for this payload can be seen with the following command:
 
@@ -80,7 +81,8 @@ int 0x80 - interrupt to call syscall
 
 
 
-##Strace
+Strace
+------
 
 Strace was utilised to observe the syscalls used and the parameters. The command used and screenshot of the output can be observed below:
 
@@ -89,7 +91,8 @@ Strace was utilised to observe the syscalls used and the parameters. The command
 ![Strace](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part2/strace.png)
 
 
-##GDB
+GDB
+------
 
 To observe the shellcode executing within GDB, a payload is going to be created within msfvenom as C code, which will subsequently be compiled and analysed. The command used to create this code is as follows:
 
