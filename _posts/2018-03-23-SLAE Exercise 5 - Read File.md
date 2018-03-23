@@ -31,6 +31,9 @@ Each of the instructions seen here will be stepped through, describing what is h
 
 **open**  int open(const char *pathname, int flags);
 
+The open syscall opens the file that is specified by 'pathname', if the file exists the return value of the syscall is a file descriptor used in subsequent syscalls to refer to this opened file. 
+
+
 jmp short 0x38 - jumps to location 0x38, which in this instance calls 0x2 (the next instruction). This is used as a 'jmp call pop' to push the next instruction after call onto the stack, to be used as the pathname pointer.
 
 mov eax, 0x5 - move 5 to eax, used for the open(2) syscall
@@ -45,6 +48,9 @@ int 0x80 - interrupt to call syscall
 
 **read**  ssize_t read(int fd, void *buf, size_t count);
 
+The 'read' syscall will read bytes from the file descriptor retruned from 'open' into the buffer that is selected as a parameter within the ecx register for this syscall. The return value is the number of bytes that have been read which can be used for the count parameter within the next syscall. 
+
+
 mov ebx, eax - move the return value into ebx (the fd)
 
 mov eax, 0x3 - move 3 into eax for the read(2) syscall
@@ -53,13 +59,15 @@ mov edi, esp - move stack pointer to edi
 
 mov ecx, edi - then move the value from the stack pointer into ecx for the syscall
 
-mov edx, 0x1000 - move 0x1000 into edx, page file? 
+mov edx, 0x1000 - move 0x1000 into edx
 
 int 0x80 - interrupt to call syscall
 
 
  
 **write**  ssize_t write(int fd, const void *buf, size_t count);
+
+The 'write' syscall writes up to the 'count' value of bytes determined within edx which in this case is will be the return balue from the 'read' syscall. This will be written to the file descriptor selected within the first parameter, which for this will be 1 for STDOUT to display the contents of the chosen file. 
 
 mov edx, eax - move return value to edx (number of bytes read is returned to eax)
 
