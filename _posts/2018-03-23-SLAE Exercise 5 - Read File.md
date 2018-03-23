@@ -31,13 +31,13 @@ Each of the instructions seen here will be stepped through, describing what is h
 
 **open**  int open(const char *pathname, int flags);
 
-*jmp short 0x38*- jumps to location 0x38, which in this instance calls 0x2 (the next instruction). This is used as a 'jmp call pop' to push the next instruction after call onto the stack, to be used as the pathname pointer.
+jmp short 0x38 - jumps to location 0x38, which in this instance calls 0x2 (the next instruction). This is used as a 'jmp call pop' to push the next instruction after call onto the stack, to be used as the pathname pointer.
 
-*mov eax, 0x5* - move 5 to eax, used for the open(2) syscall
+mov eax, 0x5 - move 5 to eax, used for the open(2) syscall
 
-*pop ebx* - pop value in stack to ebx which should contain the pathname. 
+pop ebx - pop value in stack to ebx which should contain the pathname. 
 
-*xor ecx, ecx* - clear the ecx register 
+xor ecx, ecx - clear the ecx register 
 
 int 0x80 - interrupt to call syscall
 
