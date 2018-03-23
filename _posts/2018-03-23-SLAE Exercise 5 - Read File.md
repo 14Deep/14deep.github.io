@@ -130,9 +130,9 @@ As can be seen in the 'open' man pages, the parameters required for the open sys
 
 This can be compared with the values in the registers above, where we can see that:
 
-	- eax is 5 for the open syscall
-	- ebx contains the pathname, the address of which was pushed to the stack as part of the earlier 'call'.
-	- ecx contains 0 as no flags are required
+- eax is 5 for the open syscall
+- ebx contains the pathname, the address of which was pushed to the stack as part of the earlier 'call'.
+- ecx contains 0 as no flags are required
 
 
 **Read**
@@ -147,10 +147,10 @@ Again, as can be seen in the 'read' man pages, the parameters required for the r
 
 This can be compared with the values in the registers above, where we can see that:
 
-	- eax contains 3 for the 'read' syscall
-	- ebx contains 3 for the fd which was returned from the previous call
-	- ecx contains the location to read bytes from 
-	- edx contains 4096, the amount of bytes to read up to (page)
+- eax contains 3 for the 'read' syscall
+- ebx contains 3 for the fd which was returned from the previous call
+- ecx contains the location to read bytes from 
+- edx contains 4096, the amount of bytes to read up to (page)
 	
 **Write**
 
@@ -164,9 +164,9 @@ Again, as can be seen in the 'write' man pages, the parameters required for the 
 	
 This can be compared with the values in the registers above, where we can see that:
 
-	- eax contains 4 for the write syscall
-	- ebx contains 1 for the stdout file descriptor 
-	- ecx contains a pointer to the buffer (0xbffff070)
+- eax contains 4 for the write syscall
+- ebx contains 1 for the stdout file descriptor 
+- ecx contains a pointer to the buffer (0xbffff070)
 
 
 **Exit**
