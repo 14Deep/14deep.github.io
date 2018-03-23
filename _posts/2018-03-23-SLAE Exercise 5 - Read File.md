@@ -22,7 +22,8 @@ Once this has been generated it can be disassembled using ndisasm to analyse the
 
 ![Ndisasm](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part2/Ndisasm.png)
 
-##Stepping through the instructions
+Stepping through the instructions
+------
 
 Each of the instructions seen here will be stepped through, describing what is happening at each step. 
 
