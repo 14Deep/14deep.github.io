@@ -110,7 +110,7 @@ Strace was utilised to observe the syscalls used and the parameters. The command
 GDB
 ------
 
-To observe the shellcode executing within GDB, a payload is going to be created within msfvenom as C code, which will subsequently be compiled and analysed. The command used to create this code is as follows:
+To observe the shellcode executing within GDB, the elf payload created  will be analysed. The command used to create this code is as follows:
 
 	msfvenom -p linux/x86/read_file PATH=/etc/passwd --f elf  > readfileelf
 
