@@ -14,7 +14,7 @@ The fifth task of the SLAE exam requires a bind shell to be written. The require
 
 **Requirements**
 
-For this exercise it was required to present full analysis on 3 different shellcodes found within Metasploit's msfvenom. This tool is used to generate arbritary payloads. Before the shellcode can be analysed, they have to be created.  The payloads for x86 Linux systems can be observed within msfvenom using the following command:
+For this exercise it was required to present full analysis on 3 different shellcodes found within Metasploit's msfvenom. This tool is used to generate arbritary payloads. Before the shellcode can be analysed, they have to be created. The payloads for x86 Linux systems can be observed within msfvenom using the following command:
 ```
 msfvenom -l payload | grep linux/x86
 ```
@@ -22,8 +22,7 @@ With the available payloads able to be seen below:
 
 ![Payloads](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/Payloads.png)
 
-
-Once the payload required has been chosen, it can be created and saved using the following command:
+The chosen payloads will be different to ones looked at before within the course and the exam exercises. Once the payload required has been chosen, it can be created and saved using the following command:
 ```
 msfvenom -p linux/x86/payload1 -f raw > payload1
 ```	
