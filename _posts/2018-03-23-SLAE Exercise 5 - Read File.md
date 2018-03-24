@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SLAE Exercise 5 - Read File
+title: SLAE Exercise 5 (part 2) - Read File
 subtitle: Shellcode Analysis 2 - Read File
 tags: [SLAE]
 ---
