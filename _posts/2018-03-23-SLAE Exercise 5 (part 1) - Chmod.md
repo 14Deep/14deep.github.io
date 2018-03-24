@@ -8,15 +8,15 @@ tags: [SLAE]
 linux/x86/chmod
 ======
 
-The first chosen shellcode to be used from msfvenom is the 'chmod' payload. This, as expected, changes a specified files permissions. The parameters to be used for this payload can be seen with the following command:
+The first chosen shellcode to be used from msfvenom is the 'chmod' payload. This, as expected, changes a specified files permissions. The parameters to be used for this payload to determine what payloads are required can be seen with the following command:
 
 	msfvenom -p linux/x86/chmod --payload-options
 	
-From this it can be seen that there are two required payloads:
+From this it can be seen that there are two required options:
 
 ![payloadoptions](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part1/payloadoptions.png)
 
-The command that is used to create the payload  is as below:
+The command that is used to create the payload  is as below, for this no changes to the default options will be made:
 
 	msfvenom -p linux/x86/chmod  -f raw > chmodraw
 
@@ -109,7 +109,7 @@ As expected, ebx contains the file to be manipulated:
 
 ![ebx](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part1/ebx.png)
 
-After the syscall is called, the program exits gracefully with 'exit', which will not be explained. 
+After the syscall is called, the program exits gracefully with 'exit'. 
 
 
 
