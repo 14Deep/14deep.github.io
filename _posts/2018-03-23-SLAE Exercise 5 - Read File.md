@@ -18,7 +18,7 @@ The command that is used to create a payload that will read the '/etc/passwd' fi
 
 Once this has been generated it can be disassembled using ndisasm to analyse the instructions used with the following command:
 
-	ndisasm -b 32 ./readfile
+	ndisasm -b 32 ./readfileraw
 
 ![Ndisasm](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part2/Ndisasm.png)
 
