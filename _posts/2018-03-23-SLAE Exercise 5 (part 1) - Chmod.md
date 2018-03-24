@@ -32,7 +32,7 @@ Stepping through the instructions
 
 Each of the instructions seen here will be stepped through, describing what is happening at each step. 
 
-	int chmod(const char *pathname, mode_t mode);
+**int chmod(const char *pathname, mode_t mode);**
 
 
 ```
