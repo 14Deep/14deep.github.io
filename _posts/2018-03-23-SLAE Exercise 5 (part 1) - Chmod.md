@@ -46,7 +46,8 @@ push edx - The value 0 is pushed onto the stack.
 
 call dword 0x16 - The instruction at 0x16 is called, in this instance it is 'pop ebx'
 
-*These instructions are not used and actually contain the values used within the syscall*
+
+The following instructions are not used as instructions and infact represent the value moved to the where ebx will point to in the instruction that is called to.
 Das	
 gs jz 0x71	
 Das	
