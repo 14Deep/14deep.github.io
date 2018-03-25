@@ -162,7 +162,7 @@ As can be seen, the entrypoint in this instance would be the address '0x8048054'
 ![gdbinstructions](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part3/gdbinstructions.png)
 
 
-**setreuid**
+**Setreuid**
 
 Just before the first syscall for 'setreuid', the registers were examined to determine if they were as would be expected from the earlier analysis:
 
