@@ -79,6 +79,7 @@ Int 0x80 - Interupt to call the 'open' syscall
 ```
 
 **Write**
+
 ssize_t write(int fd, const void *buf, size_t count);
 
 The 'write' syscall is used to add the new user to the file that was opened previously. This is done using the returned file descriptor. The call value couldn't be completely observed within the disassembled code obtained from Ndisasm previosuly. From debugging the shellcode with GDB the following instuctions could be observed:
