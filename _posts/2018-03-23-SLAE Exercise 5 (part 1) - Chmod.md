@@ -95,7 +95,8 @@ With the created payload, there are no symbols within the binary and so 'readelf
 
 The output of this is as below:
 
-![readelf](https://github.com/14Deep/14deep.github.io/blob/master/_posts/Images/EX5/part1/readelf.png)
+![readelf](https://raw.githubusercontent.com/14Deep/14deep.github.io/master/_posts/Images/EX5/part1/readelf.png)
+
 
 As can be seen, the entrypoint in this instance would be the address '0x8048054'. This can now be observed within GDB when setting a breakpoint at this address and running the program:
 
