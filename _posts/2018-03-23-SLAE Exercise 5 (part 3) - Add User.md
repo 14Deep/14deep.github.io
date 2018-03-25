@@ -8,7 +8,7 @@ tags: [SLAE]
 linux/x86/adduser
 ======
 
-The second chosen shellcode to be used from msfvenom is the 'adduser' payload. This adds a user to the system that it is executed on. The parameters to be used for this payload can be seen with the following command:
+The final chosen shellcode to be used from msfvenom is the 'adduser' payload. This adds a user to the system that it is executed on. The parameters to be used for this payload can be seen with the following command:
 
     msfvenom -p linux/x86/adduser --payload-options
 	
