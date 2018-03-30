@@ -38,7 +38,7 @@ int 0x80	;interupt to syscall
 	
 ```
 
-Using various techniques, this code was altered to create a polymorphic version of it. This code can be seen full annotated below:
+Using various techniques, this code was altered to create a polymorphic version of it. This code can be seen below:
 
 ```
 global _start			
