@@ -34,7 +34,7 @@ inc eax      ; On success, return value from stime is 0, inc to 1 for exit sysca
 int 0x80     ; Call interupt to exit gracefully
 ```
 
-Using various techniques, this code was altered to create a polymorphic version of it. This code can be seen full annotated below:
+Using various techniques, this code was altered to create a polymorphic version of it. This code can be seen below:
 
 ```
 global _start			
