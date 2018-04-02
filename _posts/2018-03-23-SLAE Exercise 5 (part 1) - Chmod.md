@@ -114,4 +114,8 @@ As expected, ebx contains the file to be manipulated:
 After the syscall is called, the program exits gracefully with 'exit'. 
 
 
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
 
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
