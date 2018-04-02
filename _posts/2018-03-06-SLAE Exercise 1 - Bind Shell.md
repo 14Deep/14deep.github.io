@@ -374,5 +374,9 @@ _start:
 ```
 
 
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
 
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
 
