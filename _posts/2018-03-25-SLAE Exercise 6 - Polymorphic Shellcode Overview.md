@@ -21,3 +21,11 @@ To determine how to carry out this exercise it needs to be understood what is me
 This can be achieved in many different ways, such as using different registers, using different instructions that will carry out the same function, change the order of the code and insert unnecessary code that doesn't alter the program.  There are many more ways that this can be achieved, not just by the ways listed above.
 
 It has to be kept in mind however that shellcode is best the smaller it is, so where possible the size of the shellcode should not be increased too much. This is ultimately dependant on the amount of space available to insert the shellcode. 
+
+
+
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
+
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
