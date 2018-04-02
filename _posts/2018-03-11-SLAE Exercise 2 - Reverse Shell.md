@@ -135,4 +135,8 @@ The following should be changed in order to change the IP address connected to a
 ```
 
 
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
 
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
