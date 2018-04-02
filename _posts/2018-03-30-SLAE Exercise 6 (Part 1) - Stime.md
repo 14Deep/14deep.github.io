@@ -72,3 +72,9 @@ When compiled and the extracted, the shellcode appears as follows:
 As can be seen, the polymorphic shellcode, which is nearly completely different, is only one byte larger. 
 
 
+
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
+
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
