@@ -43,3 +43,10 @@ The binaries that will be looked at for this exercise the '32' parameter will be
 **GDB**
 
 GDB (GNU Project Debugger) is a debugger that allows the execution of a program from the inside, to observe each step that it takes. The output of using this will be explained when stepping through each of the selected shellcodes.  
+
+
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert Certification:
+
+http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert
+
+Student ID: 1092
