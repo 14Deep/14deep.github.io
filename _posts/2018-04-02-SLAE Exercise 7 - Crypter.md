@@ -17,11 +17,11 @@ The final exercise for the SLAE course was to create a custom crypter. The requi
 Requirements
 ------
 
-The requirement of this exercise was to write a custom crypter using any language. For this exercise, Python was used along with the '[pycrypto]('https://www.dlitz.net/software/pycrypto/') module. First of all, it needs to be understood what is required.
+The requirement of this exercise was to write a custom crypter using any language. For this exercise, Python was used along with the '[pycrypto]('https://www.dlitz.net/software/pycrypto/')' module. First of all, it needed to be understood what was required.
 
 *What is a crypter?*
 
-This will be done by using the 'pycrypto' module alongside python to implement AES encryption to encrypt our chosen shellcode. The module 'pycrypto'  is a collection of cryptography related tooling that can be used to encrypt data using python. 
+A crypter is  code that is used to encrypt further code with the intention of making the encrypted code harder to detect by security tooling. 
 
 *How will this be done?*
 
