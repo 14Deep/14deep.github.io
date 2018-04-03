@@ -11,6 +11,7 @@ Overview
 The final exercise for the SLAE course was to create a custom crypter. The requirements were lenient with the following stated:
 
   • Free to use any existing encryption schema
+  
   • Can use any language
   
 Requirements
